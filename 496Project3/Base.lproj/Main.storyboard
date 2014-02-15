@@ -72,20 +72,30 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="E3w-LB-oNw">
-                                    <size key="itemSize" width="93" height="93"/>
+                                    <size key="itemSize" width="104" height="104"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PhotoCell" id="0YS-ix-PN2">
-                                        <rect key="frame" x="0.0" y="0.0" width="93" height="93"/>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PhotoCell" id="0YS-ix-PN2" customClass="PhotoCell">
+                                        <rect key="frame" x="0.0" y="0.0" width="104" height="104"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="93" height="93"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="104" height="104"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="X3T-gB-XYv">
+                                                    <rect key="frame" x="0.0" y="0.0" width="104" height="104"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                </imageView>
+                                            </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <size key="customSize" width="104" height="104"/>
+                                        <connections>
+                                            <outlet property="photoImageView" destination="X3T-gB-XYv" id="Urj-nQ-Fkm"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                                 <connections>

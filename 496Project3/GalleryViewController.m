@@ -10,6 +10,7 @@
 
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "GalleryViewController.h"
+#import "PhotoCell.h"
 
 @interface GalleryViewController ()<UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
 @property(nonatomic, strong) NSArray *assets;
@@ -73,10 +74,10 @@
 
 - (UICollectionViewCell *) collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    UICollectionViewCell *cell = (UICollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"PhotoCell" forIndexPath:indexPath];
+    PhotoCell *cell = (PhotoCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"PhotoCell" forIndexPath:indexPath];
     
     ALAsset *asset = self.assets[indexPath.row];
-    //cell.asset = asset;
+    cell.asset = asset;
     cell.backgroundColor = [UIColor redColor];
     
     return cell;

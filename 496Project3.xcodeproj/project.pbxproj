@@ -22,6 +22,7 @@
 		6391820118AC88D1006982FD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 639181E018AC88C1006982FD /* UIKit.framework */; };
 		6391820918AC88D2006982FD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6391820718AC88D2006982FD /* InfoPlist.strings */; };
 		6391820B18AC88D4006982FD /* _96Project3Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6391820A18AC88D4006982FD /* _96Project3Tests.m */; };
+		63FA923018AF09DC0015CC93 /* PhotoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 63FA922F18AF09DC0015CC93 /* PhotoCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,8 @@
 		6391820618AC88D2006982FD /* 496Project3Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "496Project3Tests-Info.plist"; sourceTree = "<group>"; };
 		6391820818AC88D2006982FD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6391820A18AC88D4006982FD /* _96Project3Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = _96Project3Tests.m; sourceTree = "<group>"; };
+		63FA922E18AF09DC0015CC93 /* PhotoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoCell.h; sourceTree = "<group>"; };
+		63FA922F18AF09DC0015CC93 /* PhotoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +127,8 @@
 				639181F518AC88C8006982FD /* GalleryViewController.m */,
 				639181F718AC88CD006982FD /* Images.xcassets */,
 				639181E318AC88C3006982FD /* Supporting Files */,
+				63FA922E18AF09DC0015CC93 /* PhotoCell.h */,
+				63FA922F18AF09DC0015CC93 /* PhotoCell.m */,
 			);
 			path = 496Project3;
 			sourceTree = "<group>";
@@ -255,6 +260,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				639181F618AC88C8006982FD /* GalleryViewController.m in Sources */,
+				63FA923018AF09DC0015CC93 /* PhotoCell.m in Sources */,
 				639181ED18AC88C4006982FD /* AppDelegate.m in Sources */,
 				639181F318AC88C8006982FD /* CameraViewController.m in Sources */,
 				639181E918AC88C4006982FD /* main.m in Sources */,
