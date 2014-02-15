@@ -44,6 +44,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Select Image" image="first" id="u1e-5L-l1D"/>
+                    <connections>
+                        <outlet property="imageView" destination="pWO-VV-ash" id="50t-FQ-TOT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qh2-T1-AhA" sceneMemberID="firstResponder"/>
             </objects>
