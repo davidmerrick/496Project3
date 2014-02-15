@@ -24,6 +24,7 @@
 		6391820B18AC88D4006982FD /* _96Project3Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6391820A18AC88D4006982FD /* _96Project3Tests.m */; };
 		63FA923018AF09DC0015CC93 /* PhotoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 63FA922F18AF09DC0015CC93 /* PhotoCell.m */; };
 		63FA923318AF13BD0015CC93 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63FA923218AF13BD0015CC93 /* MapViewController.m */; };
+		63FA923518AF1F090015CC93 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63FA923418AF1F090015CC93 /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +63,7 @@
 		63FA922F18AF09DC0015CC93 /* PhotoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoCell.m; sourceTree = "<group>"; };
 		63FA923118AF13BD0015CC93 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		63FA923218AF13BD0015CC93 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
+		63FA923418AF1F090015CC93 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63FA923518AF1F090015CC93 /* MapKit.framework in Frameworks */,
 				639181DF18AC88C1006982FD /* CoreGraphics.framework in Frameworks */,
 				639181E118AC88C1006982FD /* UIKit.framework in Frameworks */,
 				639181DD18AC88C1006982FD /* Foundation.framework in Frameworks */,
@@ -110,6 +113,7 @@
 		639181DB18AC88C0006982FD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				63FA923418AF1F090015CC93 /* MapKit.framework */,
 				639181DC18AC88C0006982FD /* Foundation.framework */,
 				639181DE18AC88C1006982FD /* CoreGraphics.framework */,
 				639181E018AC88C1006982FD /* UIKit.framework */,
