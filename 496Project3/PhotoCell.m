@@ -10,15 +10,17 @@
 #import "PhotoCell.h"
 
 @interface PhotoCell ()
-//an IBOutlet to a UIImageView that we will create inside of the Storyboard
+
+// an IBOutlet to a UIImageView that we will create inside of the Storyboard
 @property(nonatomic, weak) IBOutlet UIImageView *photoImageView;
+
 @end
 
 @implementation PhotoCell
 - (void) setAsset:(ALAsset *)asset
 {
-    //Overwriting the setter method for the asset to convert
-    //the asset’s thumbnail into UIImage and set it to contents of UIImageView
+    // Overwriting the setter method for the asset to convert
+    // the asset’s thumbnail into UIImage and set it to contents of UIImageView
     _asset = asset;
     self.photoImageView.image = [UIImage imageWithCGImage:[asset thumbnail]];
 }

@@ -122,6 +122,7 @@
                                         <size key="customSize" width="104" height="104"/>
                                         <connections>
                                             <outlet property="photoImageView" destination="X3T-gB-XYv" id="Urj-nQ-Fkm"/>
+                                            <segue destination="FUs-HX-kQu" kind="modal" id="CKF-WK-gAz"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -141,6 +142,44 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3qq-4t-Ow8" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="653" y="498"/>
+        </scene>
+        <!--Gallery Preview Controller-->
+        <scene sceneID="jkQ-yD-Imb">
+            <objects>
+                <viewController id="FUs-HX-kQu" customClass="GalleryPreviewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="XrJ-VN-sYa"/>
+                        <viewControllerLayoutGuide type="bottom" id="gOh-cG-4cY"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="zg1-b7-8vf">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kxi-eJ-W8v">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B0A-aU-7Kf">
+                                <rect key="frame" x="20" y="20" width="105" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Back to Gallery">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="closePreview:" destination="FUs-HX-kQu" eventType="touchUpInside" id="wW9-VM-OXf"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="ga3-gp-JMr"/>
+                    <connections>
+                        <outlet property="imagePreview" destination="kxi-eJ-W8v" id="x1d-au-39N"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nIb-dM-4EJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1235" y="498"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Vex-rW-GRa">

@@ -22,6 +22,7 @@
 		6391820118AC88D1006982FD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 639181E018AC88C1006982FD /* UIKit.framework */; };
 		6391820918AC88D2006982FD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6391820718AC88D2006982FD /* InfoPlist.strings */; };
 		6391820B18AC88D4006982FD /* _96Project3Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6391820A18AC88D4006982FD /* _96Project3Tests.m */; };
+		63C2BAA718B0185E00966A85 /* GalleryPreviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63C2BAA618B0185E00966A85 /* GalleryPreviewController.m */; };
 		63FA923018AF09DC0015CC93 /* PhotoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 63FA922F18AF09DC0015CC93 /* PhotoCell.m */; };
 		63FA923318AF13BD0015CC93 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63FA923218AF13BD0015CC93 /* MapViewController.m */; };
 		63FA923518AF1F090015CC93 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63FA923418AF1F090015CC93 /* MapKit.framework */; };
@@ -59,6 +60,8 @@
 		6391820618AC88D2006982FD /* 496Project3Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "496Project3Tests-Info.plist"; sourceTree = "<group>"; };
 		6391820818AC88D2006982FD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6391820A18AC88D4006982FD /* _96Project3Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = _96Project3Tests.m; sourceTree = "<group>"; };
+		63C2BAA518B0185E00966A85 /* GalleryPreviewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GalleryPreviewController.h; sourceTree = "<group>"; };
+		63C2BAA618B0185E00966A85 /* GalleryPreviewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GalleryPreviewController.m; sourceTree = "<group>"; };
 		63FA922E18AF09DC0015CC93 /* PhotoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoCell.h; sourceTree = "<group>"; };
 		63FA922F18AF09DC0015CC93 /* PhotoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoCell.m; sourceTree = "<group>"; };
 		63FA923118AF13BD0015CC93 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
@@ -128,6 +131,8 @@
 				639181EB18AC88C4006982FD /* AppDelegate.h */,
 				639181EC18AC88C4006982FD /* AppDelegate.m */,
 				639181EE18AC88C7006982FD /* Main.storyboard */,
+				63C2BAA518B0185E00966A85 /* GalleryPreviewController.h */,
+				63C2BAA618B0185E00966A85 /* GalleryPreviewController.m */,
 				639181F118AC88C7006982FD /* CameraViewController.h */,
 				639181F218AC88C8006982FD /* CameraViewController.m */,
 				63FA923118AF13BD0015CC93 /* MapViewController.h */,
@@ -274,6 +279,7 @@
 				63FA923318AF13BD0015CC93 /* MapViewController.m in Sources */,
 				639181F318AC88C8006982FD /* CameraViewController.m in Sources */,
 				639181E918AC88C4006982FD /* main.m in Sources */,
+				63C2BAA718B0185E00966A85 /* GalleryPreviewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

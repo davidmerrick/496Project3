@@ -10,11 +10,13 @@
 
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "GalleryViewController.h"
+#import "GalleryPreviewController.h"
 #import "PhotoCell.h"
 
 @interface GalleryViewController ()<UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
 @property(nonatomic, strong) NSArray *assets;
 @property(nonatomic, weak) IBOutlet UICollectionView *collectionView;
+@property(nonatomic, weak) IBOutlet UIImageView *bigPhotoView;
 @end
 
 @implementation GalleryViewController
@@ -78,9 +80,24 @@
     
     ALAsset *asset = self.assets[indexPath.row];
     cell.asset = asset;
-    cell.backgroundColor = [UIColor redColor];
-    
+    //Colors the background red in the event of no images. Don't really need this now.
+    //cell.backgroundColor = [UIColor redColor];
     return cell;
+}
+
+-(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    PhotoCell *preview = (PhotoCell *) sender;
+    ALAsset *asset = preview.asset;
+    
+    //Get the full-size image
+    ALAssetRepresentation* representation = [asset defaultRepresentation];
+    UIImage* image = [UIImage imageWithCGImage:[representation fullResolutionImage]];
+    
+    // Set the imagePreview to this in our galleryPreviewController
+    GalleryPreviewController* dest = (GalleryPreviewController *) (segue.destinationViewController);
+    dest.image = image;
+    
 }
 
 - (CGFloat) collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
