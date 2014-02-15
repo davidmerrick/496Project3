@@ -67,11 +67,17 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="SVY-wj-QlR">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="hng-SU-p0k" id="gZY-T2-n1l"/>
+                                </connections>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Map" image="third" id="i3O-P4-qwj" colorLabel="IBBuiltInLabel-Red"/>
+                    <connections>
+                        <outlet property="mapView" destination="SVY-wj-QlR" id="gfS-64-v5O"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aPE-qD-xEV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

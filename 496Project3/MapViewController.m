@@ -12,6 +12,5 @@
 
 - (void)viewDidLoad
 {
-    _mapLabel.text = @"Hello World!";
 }
 @end
