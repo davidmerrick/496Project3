@@ -52,6 +52,8 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
         _imageView.image = image;
         if (_newMedia){
             
+            // Save the images to a special album called "TestGallery" for demonstration purposes
+            
             NSString *albumName = @"TestGallery";
             //Find the album
             __block ALAssetsGroup* groupToAddTo;
