@@ -60,7 +60,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
         if (_newMedia)
             UIImageWriteToSavedPhotosAlbum(image,
                                            self,
-                                           @selector(image:finishedSavingWithError:contextInfo:),
+                                           @selector(image:didFinishSavingWithError:contextInfo:),
                                            nil);
     }
     else if ([mediaType isEqualToString:(NSString *)kUTTypeMovie])
@@ -69,7 +69,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
     }
 }
 
--(void)image:(UIImage *)imagefinishedSavingWithError:(NSError *)error contextInfo:(void *)contextInfo
+- (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo
 {
     if (error) {
         UIAlertView *alert = [[UIAlertView alloc]
