@@ -15,7 +15,6 @@
 
 @property (nonatomic, copy) UIImage *image;
 
-
 - (id)initWithName:(NSString*)name image:(UIImage*)image coordinate:(CLLocationCoordinate2D)coordinate;
 - (MKMapItem*)mapItem;
 

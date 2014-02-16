@@ -18,6 +18,8 @@
 
 @implementation MyLocation
 
+
+//@TODO: Make the GPS coordinates be the subtitles of the image
 - (id)initWithName:(NSString*)name image:(UIImage*)image coordinate:(CLLocationCoordinate2D)coordinate
 {
     if ((self = [super init])) {
