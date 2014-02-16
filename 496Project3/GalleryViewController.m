@@ -4,7 +4,7 @@
 //
 //  Based on code from http://brandontreb.com/iphone-programming-tutorial-creating-an-image-gallery-like-over-part-1
 //
-// Reference for ALAssets: http://www.fiveminutes.eu/accessing-photo-library-using-assets-library-framework-on-iphone/
+// Reference for information about ALAssets: http://www.fiveminutes.eu/accessing-photo-library-using-assets-library-framework-on-iphone/
 //
 //  Created by David Merrick on 2/12/14.
 //  Copyright (c) 2014 David Merrick. All rights reserved.
@@ -69,6 +69,8 @@
     // Get rid of any resources that can be recreated
 }
 
+// Static method that creates a static instance of ALAssetsLibrary.
+// Is necessary so assets don't get released immediately after we enumerate them.
 + (ALAssetsLibrary *)defaultAssetsLibrary
 {
     static dispatch_once_t pred = 0;
@@ -89,13 +91,13 @@
 
 - (UICollectionViewCell *) collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    //This sets up the photos in the cells
     PhotoCell *cell = (PhotoCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"PhotoCell" forIndexPath:indexPath];
     
     ALAsset *asset = self.assets[indexPath.row];
     cell.asset = asset;
     return cell;
 }
-
 
 // This method handles displaying the image previews when a user taps one of them in the collection view
 // It "segues" to the next view and passes the image contained in the tapped PhotoCell into that view
@@ -114,11 +116,13 @@
     
 }
 
+// This sets up the line spacing for items in the collectionView
 - (CGFloat) collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
 {
     return 4;
 }
 
+// This sets up the spacing between items in the collectionView
 - (CGFloat) collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
 {
     return 1;

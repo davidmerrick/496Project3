@@ -32,7 +32,7 @@
     [self plotPhotoPositions];
 }
 
-
+// This function sets up the data for the annotations
 - (void)plotPhotoPositions
 {
     _assets = [@[] mutableCopy];
@@ -73,6 +73,8 @@
 }
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation {
+    // This is what handles actually displaying the annotations on the map
+    
     static NSString *identifier = @"MyLocation";
     if ([annotation isKindOfClass:[MyLocation class]]) {
         
@@ -81,10 +83,12 @@
             annotationView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:identifier];
             annotationView.enabled = YES;
             annotationView.canShowCallout = YES;
+            
+            // Set the image on the annotation to be one of the asset images
             UIImageView *imageView = [[UIImageView alloc] initWithImage:[(MyLocation *) annotation image]];
             [annotationView addSubview:imageView];
             
-            //Set the frame size
+            // Set the frame size for the annotation image
             CGRect frame = annotationView.frame;
             
             frame.size = CGSizeMake(imageView.frame.size.width/4.0, imageView.frame.size.height/4.0);
@@ -98,6 +102,8 @@
     return nil;
 }
 
+// Static method that creates a static instance of ALAssetsLibrary.
+// Is necessary so assets don't get released immediately after we enumerate them.
 + (ALAssetsLibrary *) defaultAssetsLibrary
 {
     static dispatch_once_t pred = 0;

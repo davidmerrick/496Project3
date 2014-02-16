@@ -62,7 +62,9 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
             //Find the album
             __block ALAssetsGroup* groupToAddTo;
             [self.library enumerateGroupsWithTypes:ALAssetsGroupAlbum usingBlock:^(ALAssetsGroup *group, BOOL *stop) {
+                    //@todo: if album doesn't exist, create it
                     if ([[group valueForProperty:ALAssetsGroupPropertyName] isEqualToString:albumName]) {
+                        // If album exists, put it in our group block
                         groupToAddTo = group;
                     }
             }

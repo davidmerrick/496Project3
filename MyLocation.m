@@ -7,9 +7,10 @@
 //
 // Based on code from http://www.raywenderlich.com/21365/introduction-to-mapkit-in-ios-6-tutorial
 //
-
+// This class creates the annotations for the map
+//
 #import "MyLocation.h"
-#import <AddressBook/AddressBook.h>
+//#import <AddressBook/AddressBook.h>
 
 @interface MyLocation ()
 @property (nonatomic, copy) NSString *name;
