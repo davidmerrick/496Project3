@@ -47,6 +47,10 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
     
     // if kUTTypeImage (photo, not video), save it to photos album
     if ([mediaType isEqualToString:(NSString *)kUTTypeImage]) {
+
+        //@TODO: figure this out for saving image lat long metadata
+        //UIImage *image = info[UIImagePickerControllerReferenceURL];
+        //http://stackoverflow.com/questions/7965299/write-uiimage-along-with-metadata-exif-gps-tiff-in-iphones-photo-library
         UIImage *image = info[UIImagePickerControllerOriginalImage];
         
         _imageView.image = image;
@@ -57,41 +61,34 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
             NSString *albumName = @"TestGallery";
             //Find the album
             __block ALAssetsGroup* groupToAddTo;
-            [self.library enumerateGroupsWithTypes:ALAssetsGroupAlbum
-                                        usingBlock:^(ALAssetsGroup *group, BOOL *stop) {
-                                            if ([[group valueForProperty:ALAssetsGroupPropertyName] isEqualToString:albumName]) {
-                                                NSLog(@"found album %@", albumName);
-                                                groupToAddTo = group;
-                                            }
-                                        }
-                                      failureBlock:^(NSError* error) {
-                                          NSLog(@"failed to enumerate albums:\nError: %@", [error localizedDescription]);
-                                      }];
+            [self.library enumerateGroupsWithTypes:ALAssetsGroupAlbum usingBlock:^(ALAssetsGroup *group, BOOL *stop) {
+                    if ([[group valueForProperty:ALAssetsGroupPropertyName] isEqualToString:albumName]) {
+                        groupToAddTo = group;
+                    }
+            }
+            failureBlock:^(NSError* error) {
+                NSLog(@"failed to enumerate albums:\nError: %@", [error localizedDescription]);
+            }];
             
             //Save the image to the album
             CGImageRef img = [image CGImage];
-            [self.library writeImageToSavedPhotosAlbum:img
-                                              metadata:[info objectForKey:UIImagePickerControllerMediaMetadata]
-                                       completionBlock:^(NSURL* assetURL, NSError* error) {
-                                           if (error.code == 0) {
-                                               NSLog(@"saved image completed:\nurl: %@", assetURL);
-                                               
-                                               // try to get the asset
-                                               [self.library assetForURL:assetURL
-                                                             resultBlock:^(ALAsset *asset) {
-                                                                 // assign the photo to the album
-                                                                 [groupToAddTo addAsset:asset];
-                                                                 NSLog(@"Added %@ to %@", [[asset defaultRepresentation] filename], albumName);
-                                                             }
-                                                            failureBlock:^(NSError* error) {
-                                                                NSLog(@"failed to retrieve image asset:\nError: %@ ", [error localizedDescription]);
-                                                            }];
-                                           }
-                                           else {
-                                               NSLog(@"saved image failed.\nerror code %i\n%@", error.code, [error localizedDescription]);
-                                           }
-                                       }];
-                        //reference: http://stackoverflow.com/questions/10954380/save-photos-to-custom-album-in-iphones-photo-library
+            [self.library writeImageToSavedPhotosAlbum:img metadata:[info objectForKey:UIImagePickerControllerMediaMetadata] completionBlock:^(NSURL* assetURL, NSError* error) {
+                    if (error.code == 0) {
+                        NSLog(@"saved image completed:\nurl: %@", assetURL);
+                        // Try to get the asset
+                        [self.library assetForURL:assetURL resultBlock:^(ALAsset *asset) {
+                            // Add the photo to the album
+                            [groupToAddTo addAsset:asset];
+                            NSLog(@"Added %@ to %@", [[asset defaultRepresentation] filename], albumName);
+                        }
+                        failureBlock:^(NSError* error) {
+                            NSLog(@"failed to retrieve image asset:\nError: %@ ", [error localizedDescription]);
+                        }];
+                    } else {
+                        NSLog(@"saved image failed.\nerror code %i\n%@", error.code, [error localizedDescription]);
+                    }
+            }];
+            //reference: http://stackoverflow.com/questions/10954380/save-photos-to-custom-album-in-iphones-photo-library
         }
     }
 }
