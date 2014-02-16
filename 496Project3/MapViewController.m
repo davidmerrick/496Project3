@@ -43,6 +43,9 @@
     // Enumerate through all of the ALAssets (photos) in the user’s Asset Groups (Folders)
     [assetsLibrary enumerateGroupsWithTypes:ALAssetsGroupAll usingBlock:^(ALAssetsGroup *group, BOOL *stop) {
         [group enumerateAssetsUsingBlock:^(ALAsset *result, NSUInteger index, BOOL *stop) {
+            //Only enumerate images in "TestGallery" album
+            if ([[group valueForProperty:ALAssetsGroupPropertyName]
+                 isEqualToString:@"TestGallery"]){
             if(result)
             {
                 // Enumerate each folder and add its images
@@ -61,6 +64,7 @@
                     MyLocation *annotation = [[MyLocation alloc] initWithName:@"Image" image:image coordinate:coordinate];
                     [_mapView addAnnotation:annotation];
                 }
+            }
             }
         }];
     } failureBlock:^(NSError *error) {

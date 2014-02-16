@@ -16,9 +16,18 @@
 
 @implementation CameraViewController
 
+@synthesize library;
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.library = [[ALAssetsLibrary alloc] init];
+}
+
+- (void)viewDidUnload
+{
+    self.library = nil;
+    [super viewDidUnload];
 }
 
 - (void)didReceiveMemoryWarning
@@ -41,11 +50,47 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
         UIImage *image = info[UIImagePickerControllerOriginalImage];
         
         _imageView.image = image;
-        if (_newMedia)
-            UIImageWriteToSavedPhotosAlbum(image,
-                                           self,
-                                           @selector(image:didFinishSavingWithError:contextInfo:),
-                                           nil);
+        if (_newMedia){
+            
+            NSString *albumName = @"TestGallery";
+            //Find the album
+            __block ALAssetsGroup* groupToAddTo;
+            [self.library enumerateGroupsWithTypes:ALAssetsGroupAlbum
+                                        usingBlock:^(ALAssetsGroup *group, BOOL *stop) {
+                                            if ([[group valueForProperty:ALAssetsGroupPropertyName] isEqualToString:albumName]) {
+                                                NSLog(@"found album %@", albumName);
+                                                groupToAddTo = group;
+                                            }
+                                        }
+                                      failureBlock:^(NSError* error) {
+                                          NSLog(@"failed to enumerate albums:\nError: %@", [error localizedDescription]);
+                                      }];
+            
+            //Save the image to the album
+            CGImageRef img = [image CGImage];
+            [self.library writeImageToSavedPhotosAlbum:img
+                                              metadata:[info objectForKey:UIImagePickerControllerMediaMetadata]
+                                       completionBlock:^(NSURL* assetURL, NSError* error) {
+                                           if (error.code == 0) {
+                                               NSLog(@"saved image completed:\nurl: %@", assetURL);
+                                               
+                                               // try to get the asset
+                                               [self.library assetForURL:assetURL
+                                                             resultBlock:^(ALAsset *asset) {
+                                                                 // assign the photo to the album
+                                                                 [groupToAddTo addAsset:asset];
+                                                                 NSLog(@"Added %@ to %@", [[asset defaultRepresentation] filename], albumName);
+                                                             }
+                                                            failureBlock:^(NSError* error) {
+                                                                NSLog(@"failed to retrieve image asset:\nError: %@ ", [error localizedDescription]);
+                                                            }];
+                                           }
+                                           else {
+                                               NSLog(@"saved image failed.\nerror code %i\n%@", error.code, [error localizedDescription]);
+                                           }
+                                       }];
+                        //reference: http://stackoverflow.com/questions/10954380/save-photos-to-custom-album-in-iphones-photo-library
+        }
     }
 }
 
@@ -64,6 +109,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
 
 -(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
 {
+    //This tells the delegate that the user canceled the operation
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

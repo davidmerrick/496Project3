@@ -4,6 +4,8 @@
 //
 //  Based on code from http://brandontreb.com/iphone-programming-tutorial-creating-an-image-gallery-like-over-part-1
 //
+// Reference for ALAssets: http://www.fiveminutes.eu/accessing-photo-library-using-assets-library-framework-on-iphone/
+//
 //  Created by David Merrick on 2/12/14.
 //  Copyright (c) 2014 David Merrick. All rights reserved.
 //
@@ -32,15 +34,21 @@
     __block NSMutableArray *tmpAssets = [@[] mutableCopy];
 
     // Grab our static instance of the ALAssetsLibrary
+    // This is the block that we will use to enumerate all asset groups
     ALAssetsLibrary *assetsLibrary = [GalleryViewController defaultAssetsLibrary];
     
     // Enumerate through all of the ALAssets (photos) in the user’s Asset Groups (Folders)
+    // Note: the ^ operator is used to declare a block variable and to indicate the beginning of a block literal.
     [assetsLibrary enumerateGroupsWithTypes:ALAssetsGroupAll usingBlock:^(ALAssetsGroup *group, BOOL *stop) {
         [group enumerateAssetsUsingBlock:^(ALAsset *result, NSUInteger index, BOOL *stop) {
-            if(result)
-            {
-                // Enumerate each folder and add its ALAssets (photos) to the temporary array
-                [tmpAssets addObject:result];
+            //Only enumerate images in "TestGallery" album
+            if ([[group valueForProperty:ALAssetsGroupPropertyName]
+                 isEqualToString:@"TestGallery"]){
+                if(result)
+                {
+                    // Enumerate each folder and add its ALAssets (photos) to the temporary array
+                    [tmpAssets addObject:result];
+                }
             }
         }];
         
