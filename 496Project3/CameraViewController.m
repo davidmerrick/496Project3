@@ -7,6 +7,8 @@
 //  Created by David Merrick on 2/12/14.
 //  Copyright (c) 2014 David Merrick. All rights reserved.
 //
+// This handles the camera view
+//
 
 #import "CameraViewController.h"
 
@@ -48,9 +50,6 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
     // if kUTTypeImage (photo, not video), save it to photos album
     if ([mediaType isEqualToString:(NSString *)kUTTypeImage]) {
 
-        //@TODO: figure this out for saving image lat long metadata
-        //UIImage *image = info[UIImagePickerControllerReferenceURL];
-        //http://stackoverflow.com/questions/7965299/write-uiimage-along-with-metadata-exif-gps-tiff-in-iphones-photo-library
         UIImage *image = info[UIImagePickerControllerOriginalImage];
         
         _imageView.image = image;
@@ -95,6 +94,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
     }
 }
 
+// Callback method for if it finished saving but there were errors
 - (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo
 {
     if (error) {
@@ -131,4 +131,5 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
         _newMedia = YES;
     }
 }
+
 @end
