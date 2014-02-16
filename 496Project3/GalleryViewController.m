@@ -27,24 +27,26 @@
     
     _assets = [@[] mutableCopy];
     __block NSMutableArray *tmpAssets = [@[] mutableCopy];
-    // 1
+
+    // Grab our static instance of the ALAssetsLibrary
     ALAssetsLibrary *assetsLibrary = [GalleryViewController defaultAssetsLibrary];
-    // 2
+    
+    // Enumerate through all of the ALAssets (photos) in the user’s Asset Groups (Folders)
     [assetsLibrary enumerateGroupsWithTypes:ALAssetsGroupAll usingBlock:^(ALAssetsGroup *group, BOOL *stop) {
         [group enumerateAssetsUsingBlock:^(ALAsset *result, NSUInteger index, BOOL *stop) {
             if(result)
             {
-                // 3
+                // Enumerate each folder and add it’s ALAssets to the temporary array
                 [tmpAssets addObject:result];
             }
         }];
         
-        // 4
+        // (Optional) Sort assets list by date.
         //NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"date" ascending:NO];
         //self.assets = [tmpAssets sortedArrayUsingDescriptors:@[sort]];
         self.assets = tmpAssets;
         
-        // 5
+        // Reload UICollectionView
         [self.collectionView reloadData];
     } failureBlock:^(NSError *error) {
         NSLog(@"Error loading images %@", error);
@@ -54,7 +56,7 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    // Get rid of any resources that can be recreated
 }
 
 + (ALAssetsLibrary *)defaultAssetsLibrary
@@ -80,8 +82,6 @@
     
     ALAsset *asset = self.assets[indexPath.row];
     cell.asset = asset;
-    //Colors the background red in the event of no images. Don't really need this now.
-    //cell.backgroundColor = [UIColor redColor];
     return cell;
 }
 
