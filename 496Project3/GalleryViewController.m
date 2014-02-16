@@ -41,9 +41,6 @@
             }
         }];
         
-        // (Optional) Sort assets list by date.
-        //NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"date" ascending:NO];
-        //self.assets = [tmpAssets sortedArrayUsingDescriptors:@[sort]];
         self.assets = tmpAssets;
         
         // Reload UICollectionView

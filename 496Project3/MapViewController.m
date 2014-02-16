@@ -16,7 +16,9 @@
 
 @implementation MapViewController 
 
-- (void)viewWillAppear:(BOOL)animated {
+
+-(void) viewDidLoad
+{
     // Set the center of the map to be in the center of OR
     CLLocationCoordinate2D zoomLocation;
     zoomLocation.latitude = 44.0564;
@@ -33,12 +35,13 @@
 
 - (void)plotPhotoPositions
 {
+    /*
     for (id<MKAnnotation> annotation in _mapView.annotations) {
         [_mapView removeAnnotation:annotation];
     }
+     */
     
     _assets = [@[] mutableCopy];
-    __block NSMutableArray *tmpAssets = [@[] mutableCopy];
     
     // Grab our static instance of the ALAssetsLibrary
     ALAssetsLibrary *assetsLibrary = [MapViewController defaultAssetsLibrary];
@@ -79,11 +82,17 @@
             annotationView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:identifier];
             annotationView.enabled = YES;
             annotationView.canShowCallout = YES;
-            annotationView.image = [UIImage imageNamed:@"arrest.png"]; //Load pin image
+            UIImageView *imageView = [[UIImageView alloc] initWithImage:[(MyLocation *) annotation image]];
+            [annotationView addSubview:imageView];
+            
+            //Resizing frame to image size
+            CGRect frame = annotationView.frame;
+            frame.size = imageView.frame.size;
+            annotationView.frame = frame;
+            //annotationView.image = [UIImage imageNamed:@"arrest.png"]; //Load pin image
         } else {
             annotationView.annotation = annotation;
         }
-        
         return annotationView;
     }
     

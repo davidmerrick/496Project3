@@ -13,7 +13,6 @@
 
 @interface MyLocation ()
 @property (nonatomic, copy) NSString *name;
-@property (nonatomic, copy) UIImage *image;
 @property (nonatomic, assign) CLLocationCoordinate2D theCoordinate;
 @end
 
@@ -35,6 +34,10 @@
 
 - (NSString *)title {
     return _name;
+}
+
+- (NSString *)subtitle {
+    return @"Image";
 }
 
 - (CLLocationCoordinate2D)coordinate {
