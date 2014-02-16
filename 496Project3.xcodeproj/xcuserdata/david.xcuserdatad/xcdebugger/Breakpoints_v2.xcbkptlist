@@ -52,11 +52,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "496Project3/MapViewController.m"
-            timestampString = "414207655.5374"
+            timestampString = "414209429.275293"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "44"
-            endingLineNumber = "44"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
             landmarkName = "-plotPhotoPositions"
             landmarkType = "5">
          </BreakpointContent>
@@ -68,11 +68,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "496Project3/MapViewController.m"
-            timestampString = "414207655.5374"
+            timestampString = "414209429.275293"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "47"
-            endingLineNumber = "47"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
             landmarkName = "-plotPhotoPositions"
             landmarkType = "5">
          </BreakpointContent>
@@ -84,11 +84,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "496Project3/MapViewController.m"
-            timestampString = "414207655.5374"
+            timestampString = "414209429.275293"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "58"
-            endingLineNumber = "58"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
             landmarkName = "-plotPhotoPositions"
             landmarkType = "5">
          </BreakpointContent>
@@ -116,11 +116,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "496Project3/MapViewController.m"
-            timestampString = "414207655.5374"
+            timestampString = "414209429.275293"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "59"
-            endingLineNumber = "59"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
             landmarkName = "-plotPhotoPositions"
             landmarkType = "5">
          </BreakpointContent>
@@ -132,11 +132,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "496Project3/MapViewController.m"
-            timestampString = "414207655.5374"
+            timestampString = "414209429.275293"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "67"
-            endingLineNumber = "67"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
             landmarkName = "-plotPhotoPositions"
             landmarkType = "5">
          </BreakpointContent>
@@ -148,11 +148,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "496Project3/MapViewController.m"
-            timestampString = "414208110.122972"
+            timestampString = "414209429.275293"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "77"
-            endingLineNumber = "77"
+            startingLineNumber = "72"
+            endingLineNumber = "72"
             landmarkName = "-mapView:viewForAnnotation:"
             landmarkType = "5">
          </BreakpointContent>

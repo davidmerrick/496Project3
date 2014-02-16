@@ -35,12 +35,6 @@
 
 - (void)plotPhotoPositions
 {
-    /*
-    for (id<MKAnnotation> annotation in _mapView.annotations) {
-        [_mapView removeAnnotation:annotation];
-    }
-     */
-    
     _assets = [@[] mutableCopy];
     
     // Grab our static instance of the ALAssetsLibrary
@@ -62,8 +56,9 @@
                     coordinate.longitude = location.coordinate.longitude;
 
                     UIImage *image = [UIImage imageWithCGImage:[result thumbnail]];
+                    
                     // Create the annotation with our data
-                    MyLocation *annotation = [[MyLocation alloc] initWithName:@"Test" image:image coordinate:coordinate];
+                    MyLocation *annotation = [[MyLocation alloc] initWithName:@"Image" image:image coordinate:coordinate];
                     [_mapView addAnnotation:annotation];
                 }
             }
@@ -85,11 +80,11 @@
             UIImageView *imageView = [[UIImageView alloc] initWithImage:[(MyLocation *) annotation image]];
             [annotationView addSubview:imageView];
             
-            //Resizing frame to image size
+            //Set the frame size
             CGRect frame = annotationView.frame;
-            frame.size = imageView.frame.size;
-            annotationView.frame = frame;
-            //annotationView.image = [UIImage imageNamed:@"arrest.png"]; //Load pin image
+            
+            frame.size = CGSizeMake(imageView.frame.size.width/4.0, imageView.frame.size.height/4.0);
+            annotationView.frame = imageView.frame = frame;
         } else {
             annotationView.annotation = annotation;
         }
