@@ -14,9 +14,12 @@
 #import "PhotoCell.h"
 
 @interface GalleryViewController ()<UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
+
+//This array holds all the photos
 @property(nonatomic, strong) NSArray *assets;
+
+//This collection view displays thumbnails of all the photos
 @property(nonatomic, weak) IBOutlet UICollectionView *collectionView;
-@property(nonatomic, weak) IBOutlet UIImageView *bigPhotoView;
 @end
 
 @implementation GalleryViewController
@@ -36,16 +39,18 @@
         [group enumerateAssetsUsingBlock:^(ALAsset *result, NSUInteger index, BOOL *stop) {
             if(result)
             {
-                // Enumerate each folder and add it’s ALAssets to the temporary array
+                // Enumerate each folder and add its ALAssets (photos) to the temporary array
                 [tmpAssets addObject:result];
             }
         }];
         
+        // Set the assets property to this tmpAssets array
         self.assets = tmpAssets;
         
         // Reload UICollectionView
         [self.collectionView reloadData];
     } failureBlock:^(NSError *error) {
+        // Display the error to the console
         NSLog(@"Error loading images %@", error);
     }];
 }
@@ -70,6 +75,7 @@
 
 - (NSInteger) collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
+    // Determine the number of items needed in the collection view
     return self.assets.count;
 }
 
@@ -82,6 +88,9 @@
     return cell;
 }
 
+
+// This method handles displaying the image previews when a user taps one of them in the collection view
+// It "segues" to the next view and passes the image contained in the tapped PhotoCell into that view
 -(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     PhotoCell *preview = (PhotoCell *) sender;

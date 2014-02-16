@@ -13,9 +13,10 @@
 <UIImagePickerControllerDelegate,
 UINavigationControllerDelegate>
 @property BOOL newMedia;
+
+//Displays a preview of the image after it's taken in the view
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
+
+//ImagePicker from Camera
 - (IBAction)useCamera:(id)sender;
-
-- (IBAction)useCameraRoll:(id)sender;
-
 @end

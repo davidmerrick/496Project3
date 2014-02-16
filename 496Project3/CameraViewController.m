@@ -26,23 +26,6 @@
     [super didReceiveMemoryWarning];
 }
 
-- (IBAction)useCameraRoll:(id)sender {
-    if ([UIImagePickerController isSourceTypeAvailable:
-         UIImagePickerControllerSourceTypeSavedPhotosAlbum])
-    {
-        UIImagePickerController *imagePicker =
-        [[UIImagePickerController alloc] init];
-        imagePicker.delegate = self;
-        imagePicker.sourceType =
-        UIImagePickerControllerSourceTypePhotoLibrary;
-        imagePicker.mediaTypes = @[(NSString *) kUTTypeImage];
-        imagePicker.allowsEditing = NO;
-        [self presentViewController:imagePicker
-                           animated:YES completion:nil];
-        _newMedia = NO;
-    }
-}
-
 #pragma mark -
 #pragma mark UIImagePickerControllerDelegate
 
@@ -53,6 +36,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
     
     [self dismissViewControllerAnimated:YES completion:nil];
     
+    // if kUTTypeImage (photo, not video), save it to photos album
     if ([mediaType isEqualToString:(NSString *)kUTTypeImage]) {
         UIImage *image = info[UIImagePickerControllerOriginalImage];
         
@@ -63,10 +47,6 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
                                            @selector(image:didFinishSavingWithError:contextInfo:),
                                            nil);
     }
-    else if ([mediaType isEqualToString:(NSString *)kUTTypeMovie])
-    {
-        // Code here to support video if enabled
-    }
 }
 
 - (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo
@@ -74,7 +54,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
     if (error) {
         UIAlertView *alert = [[UIAlertView alloc]
                               initWithTitle: @"Save failed"
-                              message: @"Failed to save image"
+                              message: @"Image save failed."
                               delegate: nil
                               cancelButtonTitle:@"OK"
                               otherButtonTitles:nil];
@@ -93,9 +73,12 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
     {
         UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
         imagePicker.delegate = self;
-        imagePicker.sourceType =
-        UIImagePickerControllerSourceTypeCamera;
+
+        // Set the camera to be the source for picking images from
+        imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
         imagePicker.mediaTypes = @[(NSString *) kUTTypeImage];
+
+        //Keep it simple and don't allow users to edit photos before they're passed to the app
         imagePicker.allowsEditing = NO;
         [self presentViewController:imagePicker animated:YES completion:nil];
         _newMedia = YES;
